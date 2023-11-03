@@ -23,10 +23,12 @@ class UIMenuButton: UIButton{
     private func layout(){
         self.setupShape()
     }
+}
     
-    private func setupShape(){
+extension UIMenuButton: ButtonProtocol{
+    func setupShape(){
         self.clipsToBounds = true
-        self.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        self.layer.borderColor = Datasource.Colors.buttonBorder.cgColor
         self.layer.borderWidth = 3
     }
     
@@ -34,5 +36,5 @@ class UIMenuButton: UIButton{
         animation()
     }
     
-    
 }
+

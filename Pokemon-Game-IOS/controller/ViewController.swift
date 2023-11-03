@@ -14,10 +14,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.layout()
+        self.setupButtonAction()
     }
     
     private func layout(){
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = Datasource.Colors.menuBackground
         self.setupUIMenu()
     }
     
@@ -34,5 +35,15 @@ class ViewController: UIViewController {
         ])
     }
     
+    private func setupButtonAction(){
+        self.uiMenu._menuButton.addTarget(self, action: #selector(changeToGameView), for: .touchUpInside)
+    }
+    
+    @objc private func changeToGameView(){
+        let gameView: GameViewController = GameViewController()
+        gameView.modalTransitionStyle = .flipHorizontal
+        gameView.modalPresentationStyle = .fullScreen
+        self.present(gameView, animated: true)
+    }
 }
 

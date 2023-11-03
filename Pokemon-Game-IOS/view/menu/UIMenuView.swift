@@ -4,7 +4,6 @@
 //
 //  Created by Juan Camilo Argüelles Ardila on 17/10/23.
 //
-
 import UIKit
 
 class UIMenuView: UIView {
@@ -40,6 +39,10 @@ class UIMenuView: UIView {
         button.titleLabel?.numberOfLines = 0
         return button
     }()
+    
+    public var _menuButton: UIMenuButton{
+        return self.menuButton
+    }
     
     private lazy var vStack: UIStackView = {
         let stack: UIStackView = UIStackView(arrangedSubviews: [self.titleLabel, self.logoImage, self.menuButton])
@@ -91,7 +94,6 @@ class UIMenuView: UIView {
             }
             counter += 1
         }
-        print("hi")
     }
     
     private func setupImage(){
