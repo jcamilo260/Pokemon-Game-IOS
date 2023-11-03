@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
-import Kingfisher
 
 class GameViewController: UIViewController{
     
     private var gameView: UIGameView = UIGameView()
     private lazy var pokemonManager: PokemonManager = PokemonManager()
+    private lazy var imageManager: ImageManager = ImageManager()
     private var pokemons: [PokemonDTO] = []
     /*private let button: UIGameButton = {
         let theButton: UIGameButton = UIGameButton()
@@ -29,6 +29,7 @@ class GameViewController: UIViewController{
         self.view.backgroundColor = Datasource.Colors.gameBackground
         self.setupUIGameView()
         self.pokemonManager.delegate = self
+        self.imageManager.delegate = self
         self.pokemonManager.fetchRequest()
     }
     
@@ -55,7 +56,7 @@ extension GameViewController: PokemonManagerDelegate{
         }
         
         print("selected pokemon: \(self.pokemons[randomIndex].name)")
-        
+        self.imageManager.fetchRequest(url: self.pokemons[randomIndex].url)
     }
     
     func pokemonDidNotUpdate(error: Error) {
@@ -65,6 +66,9 @@ extension GameViewController: PokemonManagerDelegate{
 
 extension GameViewController: ImageManagerDelegate{
     func imageDidUpdate(_ imageManager: ImageManager, model: ImageDTO) {
+        DispatchQueue.main.async { [weak self] in
+            self?.gameView.setImagePic(url: model.imageURL)
+        }
         
     }
     
