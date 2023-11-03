@@ -11,6 +11,7 @@ import Kingfisher
 
 class GameViewController: UIViewController{
     
+    private var gameView: UIGameView = UIGameView()
     private lazy var pokemonManager: PokemonManager = PokemonManager()
     private var pokemons: [PokemonDTO] = []
     /*private let button: UIGameButton = {
@@ -26,8 +27,20 @@ class GameViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Datasource.Colors.gameBackground
+        self.setupUIGameView()
         self.pokemonManager.delegate = self
         self.pokemonManager.fetchRequest()
+    }
+    
+    private func setupUIGameView(){
+        self.view.addSubview(self.gameView)
+        self.gameView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.gameView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.gameView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.gameView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.gameView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+        ])
     }
     
 }
