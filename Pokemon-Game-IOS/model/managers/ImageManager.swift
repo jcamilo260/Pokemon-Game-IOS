@@ -13,8 +13,6 @@ protocol ImageManagerDelegate{
 
 struct ImageManager: ManagerProtocol{
     typealias Element = ImageDTO
-    
-    
     public var delegate: ImageManagerDelegate?
     
     public func fetchRequest(url: String){

@@ -4,7 +4,6 @@
 //
 //  Created by Juan Camilo Argüelles Ardila on 3/11/23.
 //
-
 import UIKit
 import Kingfisher
 
@@ -13,6 +12,7 @@ class UIGameView: UIView {
     private let title: UILabel = {
         let label: UILabel = LabelFactory.build(text: "Guess the pokemon", font: .boldSystemFont(ofSize: 40), textAlignment: .center, colorText: .black)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -21,6 +21,14 @@ class UIGameView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         return image
+    }()
+    
+    private let hintLabel: UILabel = {
+        let label: UILabel = LabelFactory.build(text: "", font: .boldSystemFont(ofSize: 40), textAlignment: .center, colorText: .black)
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 2
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     private let gameButtons: [UIGameButton] = {
@@ -52,10 +60,9 @@ class UIGameView: UIView {
     }
     
     private lazy var vStack: UIStackView = {
-        let stack: UIStackView = UIStackView(arrangedSubviews: [self.title, self.image, self.vStackButtons])
+        let stack: UIStackView = UIStackView(arrangedSubviews: [self.title, self.image, self.hintLabel, self.vStackButtons])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.backgroundColor = .green
         stack.spacing = 40
         stack.alignment = .center
         return stack
@@ -67,6 +74,14 @@ class UIGameView: UIView {
         stack.spacing = 30
         return stack
     }()
+    
+    public var _gameButtons: [UIGameButton]{
+        return self.gameButtons
+    }
+    
+    public func setHintLabel(text: String){
+        self.hintLabel.text = text
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,7 +96,6 @@ class UIGameView: UIView {
     private func layout(){
         self.backgroundColor = Datasource.Colors.gameBackground
         self.setupVStack()
-        //self.setupActivityIndicator()
         self.setupImage()
         self.setupstackButtons()
     }

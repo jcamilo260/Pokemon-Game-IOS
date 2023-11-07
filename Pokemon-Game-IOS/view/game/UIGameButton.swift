@@ -23,6 +23,10 @@ class UIGameButton: UIButton{
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setupShape()
     }
+    
+    public func setupTitle(title: String){
+        self.setTitle(title, for: .normal)
+    }
 }
 
 extension UIGameButton: ButtonProtocol{

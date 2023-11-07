@@ -30,6 +30,7 @@
 		B3C5F75E2ADF5C9E00FFA77A /* Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F75D2ADF5C9E00FFA77A /* Datasource.swift */; };
 		B3C5F7602ADF5D9900FFA77A /* UIMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F75F2ADF5D9900FFA77A /* UIMenuView.swift */; };
 		B3C5F7622ADF611F00FFA77A /* UIMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F7612ADF611F00FFA77A /* UIMenuButton.swift */; };
+		B3F3FCB52AFA947A00712C28 /* ScooreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3FCB42AFA947A00712C28 /* ScooreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		B3C5F75D2ADF5C9E00FFA77A /* Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datasource.swift; sourceTree = "<group>"; };
 		B3C5F75F2ADF5D9900FFA77A /* UIMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMenuView.swift; sourceTree = "<group>"; };
 		B3C5F7612ADF611F00FFA77A /* UIMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMenuButton.swift; sourceTree = "<group>"; };
+		B3F3FCB42AFA947A00712C28 /* ScooreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				B3AB72B12AF4A06A007DB6C5 /* PokemonManager.swift */,
 				B3AB72BF2AF4AF06007DB6C5 /* ImageManager.swift */,
 				B3AB72C12AF4B0D5007DB6C5 /* ManagerProtocol.swift */,
+				B3F3FCB42AFA947A00712C28 /* ScooreManager.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				B3AB72C82AF4B759007DB6C5 /* ButtonProtocol.swift in Sources */,
 				B3C5F75E2ADF5C9E00FFA77A /* Datasource.swift in Sources */,
 				B3C5F7452ADF5A5500FFA77A /* SceneDelegate.swift in Sources */,
+				B3F3FCB52AFA947A00712C28 /* ScooreManager.swift in Sources */,
 				B3AB72BC2AF4ADFF007DB6C5 /* ImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

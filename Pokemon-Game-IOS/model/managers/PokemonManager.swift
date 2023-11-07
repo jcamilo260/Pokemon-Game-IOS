@@ -13,8 +13,6 @@ protocol PokemonManagerDelegate{
 
 struct PokemonManager: ManagerProtocol{
     typealias Element = PokemonDTO
-    
-    
     private let url: String
     public var delegate: PokemonManagerDelegate?
     
