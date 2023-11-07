@@ -69,7 +69,6 @@ extension GameViewController: ImageManagerDelegate{
         DispatchQueue.main.async { [weak self] in
             self?.gameView.setImagePic(url: model.imageURL)
         }
-        
     }
     
     func imageDidNotUpdate(error: Error) {

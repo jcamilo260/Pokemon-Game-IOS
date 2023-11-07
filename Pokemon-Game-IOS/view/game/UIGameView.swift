@@ -17,10 +17,27 @@ class UIGameView: UIView {
     }()
     
     private let image: UIImageView = {
-        let image: UIImageView = UIImageView(image: UIImage(named: "pikachuLogo"))
+        let image: UIImageView = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         return image
+    }()
+    
+    private let gameButtons: [UIGameButton] = {
+        var buttons: [UIGameButton] = []
+        
+        for index in 0..<Datasource.NumericInfo.optionsAmount{
+            let theButton: UIGameButton = UIGameButton()
+            theButton.setTitle("Option \(index)", for: .normal)
+            theButton.setTitleColor(.black, for: .normal)
+            theButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            theButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+            buttons.append(theButton)
+            NSLayoutConstraint.activate([
+                theButton.heightAnchor.constraint(equalToConstant: 70)
+            ])
+        }
+        return buttons
     }()
     
     public func setImagePic(url: String){
@@ -35,10 +52,19 @@ class UIGameView: UIView {
     }
     
     private lazy var vStack: UIStackView = {
-        let stack: UIStackView = UIStackView(arrangedSubviews: [self.title, self.image])
+        let stack: UIStackView = UIStackView(arrangedSubviews: [self.title, self.image, self.vStackButtons])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.backgroundColor = .green
+        stack.spacing = 40
+        stack.alignment = .center
+        return stack
+    }()
+    
+    private lazy var vStackButtons: UIStackView = {
+        let stack: UIStackView = UIStackView(arrangedSubviews: self.gameButtons)
+        stack.axis = .vertical
+        stack.spacing = 30
         return stack
     }()
     
@@ -53,9 +79,11 @@ class UIGameView: UIView {
     }
     
     private func layout(){
-        self.backgroundColor = .red
+        self.backgroundColor = Datasource.Colors.gameBackground
         self.setupVStack()
+        //self.setupActivityIndicator()
         self.setupImage()
+        self.setupstackButtons()
     }
     
     private func setupVStack(){
@@ -70,7 +98,15 @@ class UIGameView: UIView {
     
     private func setupImage(){
         NSLayoutConstraint.activate([
-            self.image.heightAnchor.constraint(equalToConstant: 300),
+            self.image.heightAnchor.constraint(equalToConstant: 150),
+        ])
+    }
+    
+    private func setupstackButtons(){
+        NSLayoutConstraint.activate([
+            self.vStackButtons.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.vStackButtons.leadingAnchor.constraint(equalTo: self.vStack.leadingAnchor, constant: 30),
+            self.vStackButtons.trailingAnchor.constraint(equalTo: self.vStack.trailingAnchor, constant: -30)
         ])
     }
 }

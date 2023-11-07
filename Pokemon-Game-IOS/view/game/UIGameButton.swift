@@ -20,6 +20,7 @@ class UIGameButton: UIButton{
     }
     
     private func layout(){
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setupShape()
     }
 }

@@ -18,4 +18,8 @@ struct Datasource{
         public static let gameBackground: UIColor = .yellow
         public static let buttonBorder: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     }
+    
+    struct NumericInfo{
+        public static let optionsAmount: Int = 4
+    }
 }
