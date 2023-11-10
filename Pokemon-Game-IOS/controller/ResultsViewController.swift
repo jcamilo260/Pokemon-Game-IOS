@@ -14,6 +14,7 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupResultsView()
+        self.setupButtonAction()
     }
     
     public func setInitialData(resultScore: String){
@@ -30,6 +31,15 @@ class ResultsViewController: UIViewController {
             self.resultsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         ])
     }
+    
+    private func setupButtonAction(){
+        self.resultsView._retryButton.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
+    }
+    
+    @objc private func buttonAction(_ sender: UIMenuButton){
+        self.dismiss(animated: true)
+    }
+    
     
     
 }

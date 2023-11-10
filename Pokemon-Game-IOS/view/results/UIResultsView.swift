@@ -29,6 +29,10 @@ class UIResultsView: UIView {
         button.setTitleColor(.black, for: .normal)
         return button
     }()
+    
+    public var _retryButton: UIMenuButton{
+        return self.retryButton
+    }
 
     public var _score: UILabel{
         return self.score

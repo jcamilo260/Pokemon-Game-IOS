@@ -31,7 +31,12 @@ class GameViewController: UIViewController{
         self.setupButtonsAction()
         self.pokemonManager.delegate = self
         self.imageManager.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.pokemonManager.fetchRequest()
+        
     }
     
     private func setupUIGameView(){
