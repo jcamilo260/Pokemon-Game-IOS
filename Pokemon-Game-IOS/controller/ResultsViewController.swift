@@ -16,6 +16,10 @@ class ResultsViewController: UIViewController {
         self.setupResultsView()
     }
     
+    public func setInitialData(resultScore: String){
+        self.resultsView.setScore(score: resultScore)
+    }
+    
     private func setupResultsView(){
         self.view.addSubview(self.resultsView)
         self.resultsView.translatesAutoresizingMaskIntoConstraints = false

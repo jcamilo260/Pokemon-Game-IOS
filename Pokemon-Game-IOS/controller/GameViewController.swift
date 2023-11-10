@@ -96,6 +96,7 @@ class GameViewController: UIViewController{
     
     private func goToResults(){
         let resultsViewController: ResultsViewController = ResultsViewController()
+        resultsViewController.setInitialData(resultScore: String(self.scoreManager._score))
         resultsViewController.modalTransitionStyle = .coverVertical
         resultsViewController.modalPresentationStyle = .fullScreen
         self.present(resultsViewController, animated: true)
@@ -103,10 +104,10 @@ class GameViewController: UIViewController{
     
     private func resetData(gameFinished: Bool){
         if gameFinished{
+            self.goToResults()
             self.scoreManager.resetScore()
             self.gameView.setScoreLabel(score: self.scoreManager._score)
             self.gameFinished = false
-            self.goToResults()
         }
         else{
             self.pokemonManager.fetchRequest()

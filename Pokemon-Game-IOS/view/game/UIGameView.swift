@@ -91,7 +91,6 @@ class UIGameView: UIView {
         
     }
 
-    
     private lazy var vStack: UIStackView = {
         let stack: UIStackView = UIStackView(arrangedSubviews: [self.score, self.imageLoaderStack, self.hintLabel, self.vStackButtons])
         stack.translatesAutoresizingMaskIntoConstraints = false
