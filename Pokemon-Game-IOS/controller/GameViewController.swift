@@ -14,7 +14,7 @@ class GameViewController: UIViewController{
     private lazy var pokemonManager: PokemonManager = PokemonManager()
     private lazy var imageManager: ImageManager = ImageManager()
     private lazy var scoreManager: ScoreManager = ScoreManager()
-    private var correctAnswer: String = ""
+    private var correctPokemon: PokemonDTO?
     private var pokemons: [PokemonDTO] = []{
         didSet{
             self.setupButtonTitle()
@@ -68,13 +68,14 @@ class GameViewController: UIViewController{
     }
     
     private func validateAnswer(selectedAnswer: String, button: UIGameButton){
-        if self.canSelectOption{
-            if self.scoreManager.validateAnswer(userAnswer: selectedAnswer, correctAnswer: self.correctAnswer.capitalized){
-                self.gameView.setHintLabel(text: "Yeah")
+        if self.canSelectOption && self.correctPokemon != nil{
+            if self.scoreManager.validateAnswer(userAnswer: selectedAnswer, correctAnswer: self.correctPokemon!.name.capitalized){
+                self.gameView.setHintLabel(text: Datasource.Texts.motivationMessages[Int.random(in: 0..<Datasource.Texts.motivationMessages.count)])
+                self.gameView.setScoreLabel(score: self.scoreManager._score)
                 button.backgroundColor = .green
             }else{
                 self.gameFinished = true
-                self.gameView.setHintLabel(text: "No, it is \(self.correctAnswer)")
+                self.gameView.setHintLabel(text: "\(Datasource.Texts.wrongPokemon) \(self.correctPokemon!.name)")
                 button.backgroundColor = .red
             }
             self.canSelectOption = false
@@ -96,14 +97,19 @@ class GameViewController: UIViewController{
     private func resetData(gameFinished: Bool){
         if gameFinished{
             self.scoreManager.resetScore()
+            self.gameView.setScoreLabel(score: self.scoreManager._score)
             self.gameFinished = false
         }
-        self.gameView.setHintLabel(text: "")
+        else{
+            self.pokemonManager.fetchRequest()
+        }
+        self.gameView.setHintLabel(text: Datasource.Texts.defaultHint)
         for button in self.gameView._gameButtons{
             button.backgroundColor = .clear
         }
         self.canSelectOption = true
         self.counter = 0
+
     }
 }
 
@@ -111,13 +117,13 @@ extension GameViewController: PokemonManagerDelegate{
     func pokemonDidUpdate(_ pokemonManager: PokemonManager, models: [PokemonDTO]) {
         self.pokemons = models.choose(length: 4)
         let randomIndex = Int.random(in: 0..<self.pokemons.count)
-        self.correctAnswer = self.pokemons[randomIndex].name
+        self.correctPokemon = self.pokemons[randomIndex]
         
         for (pokemon) in self.pokemons {
             print(pokemon.name)
         }
         
-        print("selected pokemon: \(self.correctAnswer)")
+        print("selected pokemon: \(self.correctPokemon!.name)")
         self.imageManager.fetchRequest(url: self.pokemons[randomIndex].url)
     }
     
@@ -128,8 +134,10 @@ extension GameViewController: PokemonManagerDelegate{
 
 extension GameViewController: ImageManagerDelegate{
     func imageDidUpdate(_ imageManager: ImageManager, model: ImageDTO) {
+            self.gameView.mutateStack(hidePic: true)
         DispatchQueue.main.async { [weak self] in
-            self?.gameView.setImagePic(url: model.imageURL)
+            self?.gameView.setImagePicWithEffect(url: model.imageURL)
+            self?.gameView.mutateStack(hidePic: false)
         }
     }
     

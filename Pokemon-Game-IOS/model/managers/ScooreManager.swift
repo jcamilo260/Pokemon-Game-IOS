@@ -7,7 +7,10 @@
 
 import Foundation
 struct ScoreManager{
-    public var score: Int = 0
+    private var score: Int = 0
+    public var _score: Int{
+        return self.score
+    }
     
     public mutating func validateAnswer(userAnswer: String, correctAnswer: String)->Bool{
         

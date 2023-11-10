@@ -11,6 +11,10 @@ struct Datasource{
     struct Texts{
         public static let menuTitle: String = "WELCOME!"
         public static let menuButton: String = "PLAY"
+        public static let defaultHint: String = "GUESS THE POKEMON!"
+        public static let score: String = "SCORE : "
+        public static let wrongPokemon: String = "Nope, it is"
+        public static let motivationMessages: [String] = ["You rock", "Awesome", "Nice job", "You are on fire"]
     }
     
     struct Colors{

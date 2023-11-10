@@ -8,9 +8,7 @@
 import Foundation
 extension Collection where Indices.Iterator.Element == Index{
     
-    public subscript(index: Index)->Iterator.Element?{
-        return (index >= startIndex && index < endIndex) ? self[index] : nil
-    }
+    
 }
 
 extension Collection{

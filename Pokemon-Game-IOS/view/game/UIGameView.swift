@@ -9,11 +9,17 @@ import Kingfisher
 
 class UIGameView: UIView {
 
-    private let title: UILabel = {
-        let label: UILabel = LabelFactory.build(text: "Guess the pokemon", font: .boldSystemFont(ofSize: 40), textAlignment: .center, colorText: .black)
+    private let score: UILabel = {
+        let label: UILabel = LabelFactory.build(text: "SCORE : 0", font: .boldSystemFont(ofSize: 40), textAlignment: .center, colorText: .black)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontSizeToFitWidth = true
         return label
+    }()
+    
+    private lazy var imageLoaderStack: UIStackView = {
+        let stack: UIStackView = UIStackView(arrangedSubviews: [self.image])
+        stack.axis = .vertical
+        return stack
     }()
     
     private let image: UIImageView = {
@@ -23,8 +29,17 @@ class UIGameView: UIView {
         return image
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.style = .large
+        indicator.tintColor = .black
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     private let hintLabel: UILabel = {
-        let label: UILabel = LabelFactory.build(text: "", font: .boldSystemFont(ofSize: 40), textAlignment: .center, colorText: .black)
+        let label: UILabel = LabelFactory.build(text: Datasource.Texts.defaultHint, font: .boldSystemFont(ofSize: 20), textAlignment: .center, colorText: .black)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +63,7 @@ class UIGameView: UIView {
         return buttons
     }()
     
-    public func setImagePic(url: String){
+    public func setImagePicWithEffect(url: String){
         let url = URL(string: url)
         let effect = ColorControlsProcessor(brightness: -1, contrast: 1, saturation: 1, inputEV: 0)
         self.image.kf.setImage(
@@ -59,8 +74,26 @@ class UIGameView: UIView {
         )
     }
     
+    public func mutateStack(hidePic: Bool){
+        if hidePic{
+            DispatchQueue.main.async {
+                self.image.isHidden = true
+                self.imageLoaderStack.addArrangedSubview(self.activityIndicator)
+                self.activityIndicator.startAnimating()
+                self.imageLoaderStack.removeArrangedSubview(self.image)
+            }
+        }else{
+            self.activityIndicator.stopAnimating()
+            self.imageLoaderStack.addArrangedSubview(self.image)
+            self.image.isHidden = false
+            self.imageLoaderStack.removeArrangedSubview(self.activityIndicator)
+        }
+        
+    }
+
+    
     private lazy var vStack: UIStackView = {
-        let stack: UIStackView = UIStackView(arrangedSubviews: [self.title, self.image, self.hintLabel, self.vStackButtons])
+        let stack: UIStackView = UIStackView(arrangedSubviews: [self.score, self.imageLoaderStack, self.hintLabel, self.vStackButtons])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 40
@@ -83,6 +116,10 @@ class UIGameView: UIView {
         self.hintLabel.text = text
     }
     
+    public func setScoreLabel(score: Int){
+        self.score.text = "\(Datasource.Texts.score)\(score)"
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layout()
@@ -96,7 +133,7 @@ class UIGameView: UIView {
     private func layout(){
         self.backgroundColor = Datasource.Colors.gameBackground
         self.setupVStack()
-        self.setupImage()
+        self.setupImageAndLoader()
         self.setupstackButtons()
     }
     
@@ -110,9 +147,11 @@ class UIGameView: UIView {
         ])
     }
     
-    private func setupImage(){
+    private func setupImageAndLoader(){
         NSLayoutConstraint.activate([
             self.image.heightAnchor.constraint(equalToConstant: 150),
+            self.activityIndicator.heightAnchor.constraint(equalToConstant: 150),
+            self.activityIndicator.widthAnchor.constraint(equalToConstant: 150)
         ])
     }
     

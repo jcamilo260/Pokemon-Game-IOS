@@ -21,6 +21,7 @@ struct PokemonManager: ManagerProtocol{
     }
     
     public func fetchRequest(){
+        print("Im here")
         self.performRequest(theUrl: self.url)
     }
     
