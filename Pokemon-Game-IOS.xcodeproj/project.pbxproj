@@ -23,13 +23,15 @@
 		B3AB72CA2AF4BC2F007DB6C5 /* UIGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB72C92AF4BC2F007DB6C5 /* UIGameView.swift */; };
 		B3C5F7432ADF5A5500FFA77A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F7422ADF5A5500FFA77A /* AppDelegate.swift */; };
 		B3C5F7452ADF5A5500FFA77A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F7442ADF5A5500FFA77A /* SceneDelegate.swift */; };
-		B3C5F7472ADF5A5500FFA77A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F7462ADF5A5500FFA77A /* ViewController.swift */; };
+		B3C5F7472ADF5A5500FFA77A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F7462ADF5A5500FFA77A /* MenuViewController.swift */; };
 		B3C5F74C2ADF5A5600FFA77A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C5F74B2ADF5A5600FFA77A /* Assets.xcassets */; };
 		B3C5F74F2ADF5A5600FFA77A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C5F74D2ADF5A5600FFA77A /* LaunchScreen.storyboard */; };
 		B3C5F75C2ADF5AF800FFA77A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B3C5F75B2ADF5AF800FFA77A /* Kingfisher */; };
 		B3C5F75E2ADF5C9E00FFA77A /* Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F75D2ADF5C9E00FFA77A /* Datasource.swift */; };
 		B3C5F7602ADF5D9900FFA77A /* UIMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F75F2ADF5D9900FFA77A /* UIMenuView.swift */; };
 		B3C5F7622ADF611F00FFA77A /* UIMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5F7612ADF611F00FFA77A /* UIMenuButton.swift */; };
+		B3F248C02AFDB788001F1AA9 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F248BF2AFDB788001F1AA9 /* ResultsViewController.swift */; };
+		B3F248C32AFDB88B001F1AA9 /* UIResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F248C22AFDB88B001F1AA9 /* UIResultsView.swift */; };
 		B3F3FCB52AFA947A00712C28 /* ScooreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3FCB42AFA947A00712C28 /* ScooreManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,13 +53,15 @@
 		B3C5F73F2ADF5A5500FFA77A /* Pokemon-Game-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pokemon-Game-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C5F7422ADF5A5500FFA77A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C5F7442ADF5A5500FFA77A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B3C5F7462ADF5A5500FFA77A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3C5F7462ADF5A5500FFA77A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B3C5F74B2ADF5A5600FFA77A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3C5F74E2ADF5A5600FFA77A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3C5F7502ADF5A5600FFA77A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3C5F75D2ADF5C9E00FFA77A /* Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datasource.swift; sourceTree = "<group>"; };
 		B3C5F75F2ADF5D9900FFA77A /* UIMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMenuView.swift; sourceTree = "<group>"; };
 		B3C5F7612ADF611F00FFA77A /* UIMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMenuButton.swift; sourceTree = "<group>"; };
+		B3F248BF2AFDB788001F1AA9 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		B3F248C22AFDB88B001F1AA9 /* UIResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResultsView.swift; sourceTree = "<group>"; };
 		B3F3FCB42AFA947A00712C28 /* ScooreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,8 +169,9 @@
 		B3C5F7572ADF5ACE00FFA77A /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				B3C5F7462ADF5A5500FFA77A /* ViewController.swift */,
+				B3C5F7462ADF5A5500FFA77A /* MenuViewController.swift */,
 				B3A26EF52AF3EF1F00DC43A8 /* GameViewController.swift */,
+				B3F248BF2AFDB788001F1AA9 /* ResultsViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 		B3C5F7582ADF5AD500FFA77A /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B3F248C12AFDB874001F1AA9 /* results */,
 				B3AB72C42AF4B694007DB6C5 /* game */,
 				B3AB72C32AF4B684007DB6C5 /* menu */,
 				B3AB72C72AF4B759007DB6C5 /* ButtonProtocol.swift */,
@@ -190,6 +196,14 @@
 				B3AB72B92AF4AA9C007DB6C5 /* Collection+ext.swift */,
 			);
 			name = utils;
+			sourceTree = "<group>";
+		};
+		B3F248C12AFDB874001F1AA9 /* results */ = {
+			isa = PBXGroup;
+			children = (
+				B3F248C22AFDB88B001F1AA9 /* UIResultsView.swift */,
+			);
+			path = results;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C5F7622ADF611F00FFA77A /* UIMenuButton.swift in Sources */,
-				B3C5F7472ADF5A5500FFA77A /* ViewController.swift in Sources */,
+				B3C5F7472ADF5A5500FFA77A /* MenuViewController.swift in Sources */,
 				B3AB72CA2AF4BC2F007DB6C5 /* UIGameView.swift in Sources */,
 				B3C5F7432ADF5A5500FFA77A /* AppDelegate.swift in Sources */,
 				B374FF4D2AE9DD5100C4A042 /* LabelFactory.swift in Sources */,
@@ -279,6 +293,7 @@
 				B3AB72C62AF4B6CD007DB6C5 /* UIGameButton.swift in Sources */,
 				B3AB72AE2AF49ED2007DB6C5 /* PokemonData.swift in Sources */,
 				B3A26EF62AF3EF1F00DC43A8 /* GameViewController.swift in Sources */,
+				B3F248C02AFDB788001F1AA9 /* ResultsViewController.swift in Sources */,
 				B3C5F7602ADF5D9900FFA77A /* UIMenuView.swift in Sources */,
 				B3AB72B22AF4A06A007DB6C5 /* PokemonManager.swift in Sources */,
 				B3AB72C02AF4AF06007DB6C5 /* ImageManager.swift in Sources */,
@@ -288,6 +303,7 @@
 				B3C5F75E2ADF5C9E00FFA77A /* Datasource.swift in Sources */,
 				B3C5F7452ADF5A5500FFA77A /* SceneDelegate.swift in Sources */,
 				B3F3FCB52AFA947A00712C28 /* ScooreManager.swift in Sources */,
+				B3F248C32AFDB88B001F1AA9 /* UIResultsView.swift in Sources */,
 				B3AB72BC2AF4ADFF007DB6C5 /* ImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
