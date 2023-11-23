@@ -28,9 +28,15 @@ struct PokemonManager: ManagerProtocol{
     private func performRequest(theUrl: String){
         if let url = URL(string: theUrl){
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
+            var request: URLRequest = URLRequest(url: url)
+            request.httpMethod = "GET"
+            let task = session.dataTask(with: request) { data, response, error in
                 if error != nil{
                     self.delegate?.pokemonDidNotUpdate(error: error!)
+                    return
+                }
+                
+                if let response = response as? HTTPURLResponse, response.statusCode != 200{
                     return
                 }
                 

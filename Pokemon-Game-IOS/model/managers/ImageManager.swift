@@ -22,12 +22,18 @@ struct ImageManager: ManagerProtocol{
     private func performRequest(_ url: String){
         if let url = URL(string: url){
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
+            var request: URLRequest = URLRequest(url: url)
+            request.httpMethod = "GET"
+            let task = session.dataTask(with: request) { data, response, error in
                 if error != nil{
                     self.delegate?.imageDidNotUpdate(error: error!)
                     return
                 }
                 
+                if let response = response as? HTTPURLResponse, response.statusCode != 200{
+                    return
+                }
+
                 if let data = data{
                     let decodedImage = decodeModel(data: data)
                     guard let firstDecodedImage: ImageDTO = decodedImage?.first else {return}
